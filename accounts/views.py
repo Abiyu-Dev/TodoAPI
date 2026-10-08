@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 
 from .serializers import RegisterSerializer
 from .serializers import CustomTokenObtainPairSerializer
-
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 User = get_user_model()
 
@@ -26,7 +26,7 @@ class MeView(APIView):
                 'email':user.email,
                 'username':user.username
             },
-            status=status.HTTP.200.OK,
+            status=status.HTTP_200_OK,
         )
 
 

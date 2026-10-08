@@ -168,11 +168,13 @@ SIMPLE_JWT = {
     # Every time the client refreshes, issue a NEW refresh token and
     # invalidate the old one. This makes stolen refresh tokens useless
     # after the legitimate user refreshes.
-    "ROTATE_REFRESH_TOKENS": True,
+
+    #"ROTATE_REFRESH_TOKENS": True,
 
     # When rotating, also blacklist the old refresh token so it can never
     # be used again. Requires the `token_blacklist` app in INSTALLED_APPS.
-    "BLACKLIST_AFTER_ROTATION": True,
+    
+    #"BLACKLIST_AFTER_ROTATION": True,
 
     # Update the user's last_login field on successful token obtain.
     "UPDATE_LAST_LOGIN": True,

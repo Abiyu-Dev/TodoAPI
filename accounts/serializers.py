@@ -38,21 +38,16 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
-    
+
     @classmethod
-    def get_token(cls, token):
+    def get_token(cls, user):
         token = super().get_token(user)
         token['email'] = user.email
         token['username'] = user.username
-
+        return token   # <-- THIS LINE
 
     def validate(self, attrs):
-        """Customize the HTTP response body of POST /api/auth/login/."""
-        # Let the parent do the actual auth (username/password check, etc.)
         data = super().validate(attrs)
-
-        # `self.user` is set by the parent's validate() when auth succeeds.
-        # We merge user info into the response alongside the tokens.
         data["user"] = {
             "id": self.user.id,
             "username": self.user.username,
