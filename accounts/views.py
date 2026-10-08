@@ -13,3 +13,18 @@ class RegisterView(generics.CreateAPIView):
     queryset = User.objects.all()
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]
+
+
+
+class MeView(APIView):
+    def get(self, user):
+        user = request.user
+
+        return Response(
+            {
+                'id':user.id,
+                'email':user.email,
+                'username':user.username
+            },
+            status=status.HTTP.200.OK,
+        )
