@@ -13,7 +13,7 @@ urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
 
     # Login: POST {username, password} -> {access, refresh}
-    path("login/", TokenObtainPairView.as_view(), name="login"),
+    path("login/", CustomTokenObtainPairView.as_view(), name="login"),
 
     # Refresh: POST {refresh} -> new {access, refresh} (rotation enabled)
     path("refresh/", TokenRefreshView.as_view(), name="refresh"),

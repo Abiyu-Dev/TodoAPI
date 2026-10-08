@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .serializers import RegisterSerializer
-
+from .serializers import CustomTokenObtainPairSerializer
 
 
 User = get_user_model()
@@ -28,3 +28,9 @@ class MeView(APIView):
             },
             status=status.HTTP.200.OK,
         )
+
+
+
+class CustomTokenObtainPairView(TokenObtainPairView):
+    """Login endpoint with a customized payload. See serializer for details."""
+    serializer_class = CustomTokenObtainPairSerializer
